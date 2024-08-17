@@ -44,3 +44,6 @@ check_exit $? "Enabling mysql server service"
 systemctl restart mysqld &>>$LOGFILE
 check_exit $? "Restarting mysql server"
 
+#setting root password
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+check_exit $? "setting root password"
