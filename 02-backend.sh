@@ -60,11 +60,11 @@ then
     useradd expense &>>$LOGFILE
     check_exit $? "creating expense user"
 else
-    echo -e"$G expense user is already there $N"
+    echo -e "$G expense user is already there $N"
 fi
 
 #creating app directory
-mkdir /app &>>$LOGFILE
+mkdir -p /app &>>$LOGFILE
 check_exit $? "Creating app directory"
 
 #Downloading backend.zip file in tmp location
