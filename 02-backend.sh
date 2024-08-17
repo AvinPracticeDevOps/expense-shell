@@ -86,6 +86,10 @@ check_exit $? "Unzipping backend.zip in app directory"
 npm install &>>$LOGFILE
 check_exit $? "installing npm dependencies"
 
+#check your repo path
+cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service
+check_exit $? "copied backend.service"
+
 #Daemon reloading
 systemctl daemon-reload &>>$LOGFILE
 check_exit $? "Daemon reloading"
