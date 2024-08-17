@@ -12,6 +12,13 @@ G="\e[32m"
 Y="\e[33m"
 N="\0[m"
 
+#user prompt for sql credentials
+echo "please enter user:"
+read USER
+
+echo "please enter password:"
+read SQL-PASSWORD
+
 #Checking root user
 if [ $USERID -ne 0 ]
 then
@@ -45,5 +52,14 @@ systemctl restart mysqld &>>$LOGFILE
 check_exit $? "Restarting mysql server"
 
 #setting root password
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
-check_exit $? "setting root password"
+# mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+# check_exit $? "setting root password"
+
+mysql -h 172.31.35.253 -u "${USER}" -p"${SQL-PASSWORD}" -e 'show databases' &>>$LOGFILE
+if [ $? -ne 0 ]
+then
+    mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
+    check_exit $? "setting root password"
+else
+    echo -e "$R sql root password is already set $N"
+fi
