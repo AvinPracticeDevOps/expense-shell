@@ -17,7 +17,7 @@ echo "please enter user:"
 read USER
 
 echo "please enter password:"
-read SQL-PASSWORD
+read SQL_PASSWORD
 
 #Checking root user
 if [ $USERID -ne 0 ]
@@ -55,7 +55,7 @@ check_exit $? "Restarting mysql server"
 # mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
 # check_exit $? "setting root password"
 
-mysql -h 172.31.35.253 -u "${USER}" -p"${SQL-PASSWORD}" -e 'show databases' &>>$LOGFILE
+mysql -h 172.31.35.253 -u "${USER}" -p"${SQL_PASSWORD}" -e 'show databases' &>>$LOGFILE
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
