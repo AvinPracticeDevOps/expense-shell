@@ -74,6 +74,10 @@ curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expen
 cd /app &>>$LOGFILE
 check_exit $? "Changing directory to app"
 
+#removing all files in app dir
+rm -rf /app/* &>>$LOGFILE
+check_exit $? "removing all files in app dir"
+
 #unzipping backen.zip in app dir
 unzip /tmp/backend.zip &>>$LOGFILE
 check_exit $? "Unzipping backend.zip in app directory"
