@@ -22,6 +22,7 @@ else
 fi
 
 #Creating check_exit function to check exit status of given command
+check_exit(){
 if [ $1 -ne 0 ]
 then 
     echo -e "$R $2....is FAILED $N"
@@ -29,6 +30,7 @@ then
 else
     echo -e "$G $2....is SUCCESS $N"
 fi
+}
 
 #Installing nginx server
 dnf install nginx -y &>>$LOGFILE
