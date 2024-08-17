@@ -10,7 +10,7 @@ LOGFILE=/tmp/$SCRIPTNAME-$TIMESTAMP.log
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
-N="\0[m"
+N="\e[0m"
 
 #user prompt for sql credentials
 echo "please enter user:"
@@ -25,17 +25,17 @@ then
     echo -e "$R you don't have super user access, please access with super user access $N"
     exit 1
 else
-    echo -e "you are super user"
+    echo -e "$G you are super user $N"
 fi 
 
 #creating function for checking exit status
 check_exit(){
     if [ $1 -ne 0 ]
     then
-        echo -e "$R $2....is FAILED"
+        echo -e "$R $2....is FAILED $N"
         exit 1
     else
-        echo -e "$G $2....is SUCCESS"
+        echo -e "$G $2....is SUCCESS $N"
     fi 
 }
 
