@@ -107,7 +107,7 @@ dnf install mysql -y &>>$LOGFILE
 check_exit $? "Installing mysql client"
 
 #Loading backend.sql file
-mysql -h <MYSQL-SERVER-IPADDRESS> -u"${USER}" -p"${PASSWORD}" < /app/schema/backend.sql &>>$LOGFILE
+mysql -h 172.31.35.253 -u"${USER}" -p"${PASSWORD}" < /app/schema/backend.sql &>>$LOGFILE
 check_exit $? "Loaing backend.sql"
 
 #Restarting backend service
