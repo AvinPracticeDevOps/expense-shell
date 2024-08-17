@@ -52,8 +52,16 @@ dnf install nodejs -y &>>$LOGFILE
 check_exit $? "Installing nodejs"
 
 #creating user
-useradd expense &>>$LOGFILE
-check_exit $? "Creating expense user"
+# useradd expense &>>$LOGFILE
+# check_exit $? "Creating expense user"
+id expense &>>$LOGFILE
+if [ $? -ne 0 ]
+then
+    useradd expense &>>$LOGFILE
+    check_exit $? "creating expense user"
+else
+    echo -e"$G expense user is already there $N"
+fi
 
 #creating app directory
 mkdir /app &>>$LOGFILE
