@@ -58,6 +58,10 @@ check_exit $? "change dir to html"
 unzip /tmp/frontend.zip &>>$LOGFILE
 check_exit $? "unarchieving frontend.zip fiile to html dir"
 
+#copying conf file
+cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf &>>$LOGFILE
+check_exit $? "copying conf file"
+
 #Restarting nginx server
 systemctl restart nginx &>>$LOGFILE
 check_exit $? "Restarting nginx server"
